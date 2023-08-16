@@ -6,7 +6,7 @@ import logger from "morgan";
 import "./src/models/index.js";
 import indexRouter from "./src/routes/index.router.js";
 
-const { MF_PORT: PORT } = process.env;
+const { MAKERS_APP_PORT: PORT } = process.env;
 
 const app = express();
 
@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", express.static("statics"));
-
 app.use("/api", indexRouter);
 
 app.use((req, res, next) => {
