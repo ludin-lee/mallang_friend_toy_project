@@ -1,0 +1,27 @@
+{
+  "apps": [
+    {
+      "name": "mallang_friends",
+      "cwd": "../",
+      "script": "./app.js",
+      "instances": "max",
+      "exec_mode": "cluster",
+      "merge_logs": true,
+      "autorestart": true,
+      "watch": false,
+      "instance_var": "PM2_INSTANCE_ID",
+      "env_local": {
+        "MAKERS_APP_PORT": "3000",
+        "NODE_ENV": "local"
+      },
+      "env_dev": {
+        "MAKERS_APP_PORT": "3000",
+        "NODE_ENV": "dev"
+      },
+      "env_prod": {
+        "MAKERS_APP_PORT": "3000",
+        "NODE_ENV": "prod"
+      }
+    }
+  ]
+}
