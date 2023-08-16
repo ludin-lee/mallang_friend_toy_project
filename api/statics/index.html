@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>친구 점수로 노예화 시키기</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <button onclick="redirectToLogin()">로그인</button>
+    </div>
+
+    <div id="userInputDiv">
+      <input type="text" id="userName" placeholder="주인님 이름" />
+      <button onclick="redirectToRankings()">주인님의 노예 랭킹 보기</button>
+    </div>
+    <div class="parent-container">
+      <div id="rankingList">
+        <!-- 내용 -->
+      </div>
+    </div>
+      <!-- Rankings will be populated here -->
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
