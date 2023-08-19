@@ -1,15 +1,41 @@
 /* Basic styling for the pages. You can expand upon this. */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #ffc0cb;
   padding: 20px;
+  overflow-y: hidden;
 }
 
+button.give-point-button,
+button.edit-button,
+button.delete-button {
+  flex: 1.5; /* 수정 및 삭제 버튼이 각각 15%를 차지하도록 설정 */
+  width: 30px;
+  padding: 2px;
+  height: 24px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 90%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.give-point-button {
+  font-size: 10px;
+}
 .login-container,
 .ranking-container,
 .friend-detail-container,
 .manage-friend-container {
-  background-color: #fff;
+  color: #333333;
+  background-color: #ff9ab5;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,13 +55,17 @@ button {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #ff9ab5;
   color: #fff;
+  transition: all 0.3s;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #ff9ab5;
+}
+button:active {
+  scale: 95%;
 }
 
 #navbar {
@@ -72,6 +102,7 @@ button:hover {
   height: 100vh; /* 세로 중앙 정렬을 위해 높이를 설정. 필요에 따라 조정 */
 }
 #rankingList {
+  color: #333333;
   width: 100%; /* 너비를 100%로 설정 */
   margin-top: 20%;
   height: 300px; /* 원하는 높이로 설정 */
@@ -92,7 +123,7 @@ button:hover {
   background-color: transparent;
 }
 #rankingList:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 #rankingList div {
@@ -100,15 +131,18 @@ button:hover {
 }
 #rankingList div:hover {
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .details-btn {
   margin-right: 3%;
-  width: 20px; /* 버튼의 너비 */
-  height: 20px; /* 버튼의 높이 */
-  background-color: #007bff; /* 버튼의 배경색 */
+  width: 25px; /* 버튼의 너비 */
+  height: 25px; /* 버튼의 높이 */
+  background-color: #ff9ab5; /* 버튼의 배경색 */
   color: white; /* 버튼의 글자색 */
   border: none; /* 경계선 제거 */
+  padding: 0;
+  text-align: center;
+  justify-items: center;
   cursor: pointer; /* 마우스 오버 시 포인터로 변경 */
   transition: all 0.5s; /* 배경색과 그림자 변화에 대한 전환 시간 설정 */
   margin-left: 10px; /* 왼쪽 마진으로 친구 점수와 간격을 줌 */
@@ -116,7 +150,7 @@ button:hover {
 
 .details-btn:hover {
   cursor: pointer;
-  background-color: #0056b3; /* 마우스 오버 시의 배경색 */
+  background-color: #ff9ab5; /* 마우스 오버 시의 배경색 */
 }
 .details-btn:active {
   scale: 90%;
@@ -140,7 +174,7 @@ button:hover {
   background-color: transparent;
 }
 #pointHistoryContainer:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
@@ -151,7 +185,7 @@ button:hover {
 }
 #friendDetail li:hover {
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   scale: 95%;
 }
 .no-bullet {
@@ -164,7 +198,7 @@ button:hover {
 }
 .gold-text {
   font-weight: bold;
-  color: pink;
+  color: white;
 }
 #rankingList > div {
   /* 각 친구 항목에 대한 스타일 */
@@ -176,14 +210,89 @@ button:hover {
   transition: background-color 0.3s, box-shadow 0.5s; /* 배경색과 그림자 변화에 대한 전환 시간 설정 */
   padding: 5px 0px; /* 상하 패딩 추가로 각 항목 간의 간격 확보 */
 }
-#rankingList > div:hover {
-  background-color: rgba(255, 255, 255, 0.7); /* 투명한 흰색 배경 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
-}
+
 .managing-container {
   display: flex;
   flex-direction: column;
   text-align: center;
 
   justify-content: center;
+}
+/* ... 기존의 스타일 ... */
+
+#addFriendBtn {
+  position: fixed; /* 화면 스크롤에 상관없이 항상 같은 위치에 고정 */
+  bottom: 10px; /* 화면 하단에서 10px 떨어진 위치 */
+  right: 10px; /* 화면 우측에서 10px 떨어진 위치 */
+  padding: 5px 10px;
+  font-size: 12px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%; /* 원형으로 만들기 위해 50%로 설정 */
+  background-color: #ff9ab5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+  border: none; /* 경계선 제거 */
+  color: white; /* 글자색을 흰색으로 설정 */
+  cursor: pointer; /* 마우스 오버 시 포인터로 변경 */
+  display: flex; /* 내부 아이콘 및 텍스트를 중앙 정렬하기 위해 flex 사용 */
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  font-weight: 800;
+  transition: all 0.2s;
+}
+
+#addFriendBtn:active {
+  scale: 95%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 눌렸을 때의 그림자 (더 작게) */
+}
+
+.friend-item {
+  display: flex;
+  justify-content: flex-start; /* 항목들을 왼쪽으로 정렬 */
+  align-items: center; /* 항목들을 수직으로 중앙 정렬 */
+  gap: 5px; /* 항목들 사이의 간격 */
+  border-bottom: 1px solid #ccc;
+}
+.friend-name {
+  margin-left: 10px;
+  font-weight: bold; /* 진한 글씨로 설정 */
+  display: flex;
+  flex: 7; /* 이름과 점수가 전체의 70%를 차지하도록 설정 */
+  justify-content: flex-start; /* 항목들을 왼쪽으로 정렬 */
+  color: #333333;
+}
+
+#logoutButton {
+  background-color: #ff9ab5;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.managing-container > h2 {
+  color: #333333;
+}
+.login-container > h2 {
+  color: #333333;
+}
+#addFriendForm {
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+#friendName {
+  display: flex;
+  width: 100%;
+  padding: 10px 0;
+}
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -120px;
+  padding-top: 40px;
+}
+.fit-picture {
+  border-radius: 10px;
 }

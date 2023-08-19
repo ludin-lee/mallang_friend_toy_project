@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "mallang_friends",
-      "cwd": "../",
+      "cwd": "./",
       "script": "./app.js",
       "instances": "max",
       "exec_mode": "cluster",

@@ -10,7 +10,7 @@ async function fetchFriendDetails() {
 
   try {
     const response = await fetch(
-      `http://127.0.0.1:3000/api/friend/info?friendId=${friendId}`
+      `https://mallang.site/api/friend/info?friendId=${friendId}`
     );
     const data = await response.json();
 
@@ -18,8 +18,8 @@ async function fetchFriendDetails() {
       const friendDetailDiv = document.getElementById("friendDetail");
       const friendInfo = data.data.friendInfo;
       friendDetailDiv.innerHTML = `
-    <h3>${friendInfo.name}</h3>
-    <p>Total Points: ${friendInfo.point}</p>
+    <h3>친구 이름: ${friendInfo.name}</h3>
+    <p>총 점수: ${friendInfo.point}</p>
     <ul class="no-bullet">
         ${friendInfo.pointHistories
           .map(

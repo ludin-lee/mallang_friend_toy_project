@@ -8,12 +8,23 @@
   </head>
   <body>
     <div class="managing-container">
-      <h2>Manage Friends</h2>
-      <button id="addFriend">친구 추가</button>
-      <button id="updateFriendName">친구 이름 변경</button>
-      <button id="deleteFriend">친구 손절</button>
-      <button id="givePoints">포인트 증정</button>
+      <h2>친구 관리하기</h2>
+
+      <div id="friendList" class="form-container">
+        <!-- 친구 리스트가 여기에 동적으로 생성됩니다. -->
+      </div>
+
+      <button id="addFriendBtn">+</button>
+      <div id="addFriendForm" class="form-container" style="display: none">
+        <input type="text" id="friendName" placeholder="친구 이름" />
+        <button onclick="addFriend()">확인</button>
+      </div>
     </div>
+
+    <div id="navbar">
+      <button id="logoutButton">LOGOUT</button>
+    </div>
+
     <script src="./js/manageFriend.js"></script>
   </body>
 </html>

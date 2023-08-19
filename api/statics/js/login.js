@@ -7,7 +7,7 @@ document
     const password = document.getElementById("password").value;
 
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/auth/token", {
+      const response = await fetch("https://mallang.site/api/auth/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,8 +29,7 @@ document
     }
   });
 
-document
-  .getElementById("backButtonLogin")
-  .addEventListener("click", function () {
-    window.history.back();
-  });
+document.getElementById("homeButton").addEventListener("click", function () {
+  // 사용자를 메인 페이지로 리다이렉트합니다.
+  window.location.href = "index.html"; // 메인 페이지의 경로를 정확하게 입력해주세요.
+});

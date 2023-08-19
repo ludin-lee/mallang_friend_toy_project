@@ -7,7 +7,7 @@ class FriendController {
     try {
       const ownerInfo = await db.user.findOne({ where: { name } });
 
-      if (!ownerInfo) throw NotFoundError();
+      if (!ownerInfo) throw new NotFoundError();
 
       const friendList = await db.friend.findAll({
         where: { ownerId: ownerInfo.id },
@@ -15,6 +15,7 @@ class FriendController {
 
       res.status(200).json({ result: true, data: { friendList } });
     } catch (err) {
+      console.log(err);
       res.status(err.status || 500).json({
         result: false,
         message: err.message || "Server Error",
@@ -33,10 +34,21 @@ class FriendController {
             as: "pointHistories",
           },
         ],
+        order: [
+          [
+            {
+              model: db.pointHistory,
+              as: "pointHistories",
+            },
+            "createdAt",
+            "DESC",
+          ],
+        ],
       });
 
       res.status(200).json({ result: true, data: { friendInfo } });
     } catch (err) {
+      console.log(err);
       res.status(err.status || 500).json({
         result: false,
         message: err.message || "Server Error",
@@ -53,10 +65,17 @@ class FriendController {
 
       res.status(200).json({ result: true, data: { friendInfo } });
     } catch (err) {
-      res.status(err.status || 500).json({
-        result: false,
-        message: err.message || "Server Error",
-      });
+      if (err.original.code === "ER_DUP_ENTRY") {
+        res.status(400).json({
+          result: false,
+          message: "duplicate Error",
+        });
+      } else {
+        res.status(err.status || 500).json({
+          result: false,
+          message: err.message || "Server Error",
+        });
+      }
     }
   };
 
@@ -73,10 +92,17 @@ class FriendController {
 
       res.status(200).json({ result: true });
     } catch (err) {
-      res.status(err.status || 500).json({
-        result: false,
-        message: err.message || "Server Error",
-      });
+      if (err.original.code === "ER_DUP_ENTRY") {
+        res.status(400).json({
+          result: false,
+          message: "duplicate Error",
+        });
+      } else {
+        res.status(err.status || 500).json({
+          result: false,
+          message: err.message || "Server Error",
+        });
+      }
     }
   };
 
