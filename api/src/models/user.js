@@ -26,7 +26,7 @@ export default function (sequelize, DataTypes) {
           fields: ["email"],
         },
       ],
-      paranoid: true,
+      paranoid: false,
     }
   );
 }

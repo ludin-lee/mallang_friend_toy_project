@@ -7,13 +7,19 @@
     <title>친구 점수로 노예화 시키기</title>
   </head>
   <body>
+    <div class="centered-container">
+      <img class="fit-picture" src="./img/어말랑.jpg" />
+      <h2>어말랑의 점수 얻기</h2>
+    </div>
+  
     <div id="navbar">
+      
       <button onclick="redirectToLogin()">로그인</button>
     </div>
 
     <div id="userInputDiv">
-      <input type="text" id="userName" placeholder="주인님 이름" />
-      <button onclick="redirectToRankings()">주인님의 노예 랭킹 보기</button>
+      <input type="text" id="userName" placeholder="주인님 이름" onkeydown="checkEnterKey(event)" />
+      <button onclick="redirectToRankings()">친구 랭킹 보기</button>
     </div>
     <div class="parent-container">
       <div id="rankingList">

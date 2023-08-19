@@ -25,7 +25,7 @@ export default function (sequelize, DataTypes) {
           fields: ["friendId"],
         },
       ],
-      paranoid: true,
+      paranoid: false,
     }
   );
 }
